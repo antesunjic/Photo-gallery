@@ -15,9 +15,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-  const [isGrayScale, setIsGrayScale] = useState(false);
+  const [isGrayScale, setIsGrayScale] = useState < boolean > (false);
 
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState < number >(0) ;
+
   return (
     <div>
       <GlobalStyle />

@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../src/index";
 import { getPhotos } from "../../store/actions/photosActions";
 import { StyledPhotos } from "./Photos.styled";
 import PhotosGrid from "./PhotosGrid";
 
-const Photos = ({ sliderValue, isGrayScale }) => {
+interface IProps{
+  sliderValue: number,
+  isGrayScale: boolean,
+}
+
+const Photos:React.FC<IProps> = ({ sliderValue, isGrayScale }) => {
   const dispatch = useDispatch();
 
-  const photos = useSelector((state) => state.photos);
+  const photos = useSelector((state:RootState) => state.photosReducer.photos);
 
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState<number>(1);
 
   useEffect(() => {
     dispatch(getPhotos(pageNumber));

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import {
   SwitchContainerStyled,
   SwitchDivStyled,
@@ -7,7 +7,12 @@ import {
   SwitchStyled,
 } from "./GrayscaleSwitch.styled";
 
-const GrayscaleSwitch = ({ isGrayScale, setIsGrayScale }) => {
+interface IProps {
+  isGrayScale: boolean,
+  setIsGrayScale: Dispatch<SetStateAction<boolean>>
+}
+
+const GrayscaleSwitch:React.FC<IProps> = ({isGrayScale, setIsGrayScale}) => {
   return (
     <div>
       <p>Normal | Grayscale</p>

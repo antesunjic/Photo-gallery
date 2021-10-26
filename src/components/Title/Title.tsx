@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledTitle } from "./Title.styled";
 
-const Title = () => {
+const Title:React.FC = () => {
   return (
     <StyledTitle>
       <h1>Photo gallery</h1>

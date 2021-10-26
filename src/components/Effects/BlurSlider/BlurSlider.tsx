@@ -1,6 +1,12 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { BlurSliderStyled } from "./BlurSlider.styled";
-const BlurSlider = ({ sliderValue, setSliderValue }) => {
+
+interface IProps {
+  sliderValue: number,
+  setSliderValue: Dispatch<SetStateAction<number>>;
+}
+
+const BlurSlider:React.FC<IProps> = ({ sliderValue, setSliderValue }) => {
   return (
     <BlurSliderStyled>
       <p>Slide for blur effect!</p>
@@ -10,7 +16,7 @@ const BlurSlider = ({ sliderValue, setSliderValue }) => {
         max="10"
         value={sliderValue}
         onChange={(e) => {
-          setSliderValue(e.target.value);
+          setSliderValue(parseInt(e.target.value));
         }}
       />
     </BlurSliderStyled>

@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const StyledPhotos = styled.section`
+interface StyledPhotosInterface{
+  isGrayScale: boolean,
+  sliderValue: number
+}
+
+export const StyledPhotos = styled.section<StyledPhotosInterface>`
   div {
     position: absolute;
     justify-content: center;

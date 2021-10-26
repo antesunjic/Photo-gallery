@@ -4,6 +4,7 @@ export const SwitchStyled = styled.span`
   display: flex;
   justify-content: center;
   background-color: transparent;
+  margin: 2px 80px 0 0;
 `;
 
 export const SwitchContainerStyled = styled.div`
@@ -11,7 +12,11 @@ export const SwitchContainerStyled = styled.div`
   text-align: center;
 `;
 
-export const SwitchLabelStyled = styled.label`
+interface SwitchLabel {
+  isGrayScale: boolean;
+}
+
+export const SwitchLabelStyled = styled.label<SwitchLabel>`
   cursor: pointer;
   position: absolute;
   display: inline-block;
@@ -45,7 +50,7 @@ export const SwitchDivStyled = styled.div`
   background: #fff;
   box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.3);
   transition: all 300ms;
-`;
+  `;
 
 export const GrayscaleSwitch = styled.div`
   background-color: transparent;

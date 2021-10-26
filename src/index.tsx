@@ -3,24 +3,39 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import { createStore, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk";
+import { createStore, applyMiddleware, compose, combineReducers, Action } from "redux";
+import thunk, { ThunkAction } from "redux-thunk";
 
 import { Provider } from "react-redux";
 
-import photosReducer from "../src/store/reducers/photosReducer";
+import photosReducer from "./store/reducers/photosReducer";
 
-let composeEnhancers = null;
-if (process.env.NODE_ENV === "development") {
-  composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-} else {
-  composeEnhancers = compose;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;
+
+
+declare global {
+    interface Window {
+      __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
 }
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const RootReducer: any = combineReducers({
+  photosReducer
+})
+
 
 const store = createStore(
-  photosReducer,
+  RootReducer,
   composeEnhancers(applyMiddleware(thunk))
-);
+  );
+
+export type RootState = ReturnType<typeof RootReducer>
 
 ReactDOM.render(
   <React.StrictMode>
