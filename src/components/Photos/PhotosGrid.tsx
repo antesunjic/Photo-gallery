@@ -33,14 +33,13 @@ const PhotosGrid:React.FC<IProps> = ({ photos, setPageNumber }) => {
       {photos?.map((photo, index) => {
         if (photos.length === index + 1) {
           return (
-            <div ref={isLastElementRef}>
             <StyledSinglePhoto
+            ref={isLastElementRef}
               alt={`${photo.id}`}
               src={`https://picsum.photos/id/${photo.id}/900/900`}
               key={photo.id}
               loading="lazy"
             />
-            </div>
           );
         } else {
           return (
